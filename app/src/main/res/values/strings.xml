@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Trace</string>
+    <string name="start">Start Tracing</string>
+    <string name="help">Help</string>
 </resources>
