@@ -1,9 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.trace.HelpActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/answer2"
+        android:layout_marginBottom="47dp"
+        android:layout_toEndOf="@+id/question2"
+        android:layout_toRightOf="@+id/question2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/help"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/help"
+                android:textAlignment="center"
+                android:textSize="60sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/question1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/help"
+                android:layout_alignStart="@+id/help"
+                android:layout_below="@+id/help"
+                android:layout_marginTop="32dp"
+                android:text="@string/question1"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="123dp" />
+
+            <TextView
+                android:id="@+id/answer1"
+                android:layout_width="match_parent"
+                android:layout_height="104dp"
+                android:layout_alignLeft="@+id/question1"
+                android:layout_alignStart="@+id/question1"
+                android:layout_below="@+id/question1"
+                android:layout_marginTop="10dp"
+                android:text="@string/answer1"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="174dp" />
+
+            <TextView
+                android:id="@+id/question2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/answer1"
+                android:layout_alignStart="@+id/answer1"
+                android:layout_below="@+id/answer1"
+                android:layout_marginTop="28dp"
+                android:text="@string/question2"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="174dp" />
+
+            <TextView
+                android:id="@+id/answer2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/question2"
+                android:layout_alignStart="@+id/question2"
+                android:layout_below="@+id/question2"
+                android:layout_marginTop="8dp"
+                android:text="@string/answer2"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="174dp" />
+
+            <TextView
+                android:id="@+id/question3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/answer2"
+                android:layout_alignStart="@+id/answer2"
+                android:layout_below="@+id/answer2"
+                android:layout_marginTop="39dp"
+                android:text="@string/question3"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="123dp" />
+
+            <TextView
+                android:id="@+id/answer3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/question3"
+                android:layout_alignStart="@+id/question3"
+                android:layout_below="@+id/question3"
+                android:layout_marginTop="11dp"
+                android:text="@string/answer3"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="174dp" />
+
+            <TextView
+                android:id="@+id/question4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/answer3"
+                android:layout_alignStart="@+id/answer3"
+                android:layout_below="@+id/answer3"
+                android:layout_marginTop="33dp"
+                android:text="@string/question4"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="123dp" />
+
+            <TextView
+                android:id="@+id/answer4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/question4"
+                android:layout_alignStart="@+id/question4"
+                android:layout_below="@+id/question4"
+                android:layout_marginTop="9dp"
+                android:text="@string/answer4"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="174dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
