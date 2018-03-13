@@ -2,6 +2,7 @@
     <string name="app_name">Trace</string>
     <string name="start">Start Tracing</string>
     <string name="help">Help</string>
+
     <string name="question1">Where do I get images to trace?</string>
     <string name="answer1">You can get images from your device gallery or from Bing Images. Whenever you get an image you have the option of saving it to Trace to use again.</string>
     <string name="question2">How do I edit my image before tracing?</string>
@@ -12,4 +13,8 @@
     <string name="answer4">On the edit screen, drag the image to the trash icon.</string>
     <string name="question5">What types of images can I use?</string>
     <string name="answer5">You can use .png and .gif images.</string>
+
+    <string name="bingImage">Get From Bing Images</string>
+    <string name="galleryImage">Upload From Gallery</string>
+    <string name="savedImage">Use Saved Image</string>
 </resources>
