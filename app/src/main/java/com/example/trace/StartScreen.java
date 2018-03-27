@@ -18,4 +18,9 @@ public class StartScreen extends AppCompatActivity {
         Intent intent = new Intent(this, HelpActivity.class);
         startActivity(intent);
     }
+
+    public void goToCamera(View view) {
+        Intent intent = new Intent(this, CameraActivity.class);
+        startActivity(intent);
+    }
 }
