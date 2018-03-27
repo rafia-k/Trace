@@ -18,7 +18,6 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Size;
-import android.util.SparseIntArray;
 import android.view.Surface;
 import android.view.TextureView;
 import android.widget.Toast;
@@ -27,15 +26,6 @@ import java.util.Arrays;
 public class CameraActivity extends AppCompatActivity {
 
     private TextureView textureView;
-
-    //Check state orientation of output image
-    private static final SparseIntArray ORIENTATION = new SparseIntArray();
-    static {
-        ORIENTATION.append(Surface.ROTATION_0, 90);
-        ORIENTATION.append(Surface.ROTATION_90,0);
-        ORIENTATION.append(Surface.ROTATION_180,270);
-        ORIENTATION.append(Surface.ROTATION_270,180);
-    }
 
     private String cameraId;
     private CameraDevice cameraDevice;
