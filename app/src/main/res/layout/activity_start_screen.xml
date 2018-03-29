@@ -26,7 +26,7 @@
         android:layout_below="@+id/title"
         android:layout_centerVertical="true"
         android:layout_marginTop="164dp"
-        android:onClick="goToCamera"
+        android:onClick="goToImageMenu"
         android:text="@string/start"
         android:textSize="30sp" />
 

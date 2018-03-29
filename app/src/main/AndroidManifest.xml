@@ -23,7 +23,6 @@
             </intent-filter>
         </activity>
 
-
         <activity
             android:name=".ImageMenu"
             android:parentActivityName=".StartScreen">
@@ -33,7 +32,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".StartScreen" />
         </activity>
-
 
         <activity
             android:name=".HelpActivity"
@@ -45,10 +43,9 @@
                 android:value=".StartScreen" />
         </activity>
 
-
         <activity
             android:name=".CameraActivity"
-            android:parentActivityName=".StartScreen">
+            android:parentActivityName=".ImageMenu">
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data

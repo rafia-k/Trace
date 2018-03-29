@@ -17,4 +17,6 @@
     <string name="bingImage">Get From Bing Images</string>
     <string name="galleryImage">Upload From Gallery</string>
     <string name="savedImage">Use Saved Image</string>
+
+    <string name="image">Image for tracing</string>
 </resources>

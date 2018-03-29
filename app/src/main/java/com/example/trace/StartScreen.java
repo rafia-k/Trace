@@ -19,8 +19,8 @@ public class StartScreen extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void goToCamera(View view) {
-        Intent intent = new Intent(this, CameraActivity.class);
+    public void goToImageMenu(View view) {
+        Intent intent = new Intent(this, ImageMenu.class);
         startActivity(intent);
     }
 }
