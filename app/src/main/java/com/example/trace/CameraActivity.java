@@ -11,6 +11,7 @@ import android.hardware.camera2.CameraDevice;
 import android.hardware.camera2.CameraManager;
 import android.hardware.camera2.CaptureRequest;
 import android.hardware.camera2.params.StreamConfigurationMap;
+import android.net.Uri;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.support.annotation.NonNull;
@@ -20,6 +21,7 @@ import android.os.Bundle;
 import android.util.Size;
 import android.view.Surface;
 import android.view.TextureView;
+import android.widget.ImageView;
 import android.widget.Toast;
 import java.util.Arrays;
 
@@ -67,6 +69,11 @@ public class CameraActivity extends AppCompatActivity {
         //From Java 1.4, you can use the keyword assert to check expression true or false
         assert textureView != null;
         textureView.setSurfaceTextureListener(textureListener);
+
+        //Pulling the image from the intent and setting it to the image view
+        Uri receivedImage = getIntent().getParcelableExtra("ImageURI");
+        ImageView traceable = (ImageView) findViewById(R.id.traceable);
+        traceable.setImageURI(receivedImage);
     }
 
     private void createCameraPreview() {

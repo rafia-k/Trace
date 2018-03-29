@@ -14,8 +14,8 @@ public class ImageMenu extends AppCompatActivity {
 
     private static int IMG_RESULT = 1;
     String ImageDecode;
-    ImageView imageViewLoad;
-    Button LoadImage;
+    Button LoadGalleryImage;
+    Button LoadBingImage;
     Intent intent;
     String[] FILE;
 
@@ -24,15 +24,24 @@ public class ImageMenu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_menu);
 
-        LoadImage = (Button)findViewById(R.id.galleryImage);
-        imageViewLoad = (ImageView) findViewById(R.id.traceable);
+        LoadGalleryImage = (Button)findViewById(R.id.galleryImage);
+        LoadBingImage = (Button)findViewById(R.id.bingImage);
 
-        LoadImage.setOnClickListener(new View.OnClickListener() {
+        LoadGalleryImage.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(intent, IMG_RESULT);
+            }
+        });
+
+        LoadBingImage.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.bing.com/images/search?sp=1&pq=line+dr&sc=8-7&cvid=18D76BEEC95A40078DCE84ACB0381D6B&q=line+drawings&qft=+filterui:photo-transparent&FORM=IRFLTR"));
+                startActivity(i);
             }
         });
     }
@@ -52,7 +61,11 @@ public class ImageMenu extends AppCompatActivity {
 
                 int columnIndex = cursor.getColumnIndex(FILE[0]);
                 String images= cursor.getString(columnIndex);
-                imageViewLoad.setImageURI(selectedImage);
+
+                //Start camera activity and send image as an extra
+                Intent intent = new Intent(this, CameraActivity.class);
+                intent.putExtra("ImageURI", selectedImage);
+                startActivity(intent);
 
             } catch (Exception e) {
                 e.printStackTrace();

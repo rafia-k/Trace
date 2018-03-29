@@ -30,4 +30,5 @@
         android:layout_above="@id/galleryImage"
         android:text="@string/savedImage"
         android:textSize="30sp" />
+
 </RelativeLayout>
