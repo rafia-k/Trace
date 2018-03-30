@@ -21,7 +21,9 @@ import android.os.Bundle;
 import android.util.Size;
 import android.view.Surface;
 import android.view.TextureView;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.Toast;
 import java.util.Arrays;
 
@@ -39,6 +41,12 @@ public class CameraActivity extends AppCompatActivity {
     private static final int REQUEST_CAMERA = 200;
     private Handler mBackgroundHandler;  //Had multiple import options, selected first
     private HandlerThread mBackgroundThread;
+
+    //ImageView
+    ImageView traceable;
+
+    //Transparency switch
+    Switch OnOff;
 
     CameraDevice.StateCallback stateCallback = new CameraDevice.StateCallback() {
         @Override
@@ -72,8 +80,26 @@ public class CameraActivity extends AppCompatActivity {
 
         //Pulling the image from the intent and setting it to the image view
         Uri receivedImage = getIntent().getParcelableExtra("ImageURI");
-        ImageView traceable = (ImageView) findViewById(R.id.traceable);
+        traceable = (ImageView) findViewById(R.id.traceable);
         traceable.setImageURI(receivedImage);
+
+        OnOff = (Switch)findViewById(R.id.setTransparency);
+        OnOff.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                if(OnOff.isChecked())
+                {
+                    traceable.setAlpha(0.5f);
+                }
+                else {
+                    traceable.setAlpha(1f);
+                }
+
+            }
+        });
+
     }
 
     private void createCameraPreview() {
