@@ -22,6 +22,7 @@ import android.util.Size;
 import android.view.Surface;
 import android.view.TextureView;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.Toast;
@@ -48,6 +49,12 @@ public class CameraActivity extends AppCompatActivity {
     //Transparency switch
     Switch OnOff;
 
+
+    //TODO: Handle rotation of camera
+    //TODO: Save transparency state after rotation
+    //TODO: Scale all images to a similar starting size regardless of source resolution
+
+
     CameraDevice.StateCallback stateCallback = new CameraDevice.StateCallback() {
         @Override
         public void onOpened(@NonNull CameraDevice camera) {
@@ -73,6 +80,9 @@ public class CameraActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
 
+        //Keep the screen on so the user can trace in peace without tapping on the screen every few seconds
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
         textureView = (TextureView) findViewById(R.id.textureView);
         //From Java 1.4, you can use the keyword assert to check expression true or false
         assert textureView != null;
@@ -91,7 +101,7 @@ public class CameraActivity extends AppCompatActivity {
 
                 if(OnOff.isChecked())
                 {
-                    traceable.setAlpha(0.5f);
+                    traceable.setAlpha(0.4f);
                 }
                 else {
                     traceable.setAlpha(1f);

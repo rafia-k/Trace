@@ -17,20 +17,32 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:contentDescription="@string/savedImage"
-        app:srcCompat="@mipmap/ic_launcher" />
+        android:contentDescription="@string/savedImage" />
 
     <Switch
         android:id="@+id/setTransparency"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:paddingHorizontal="16dp"
-        android:paddingVertical="16dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
         android:switchPadding="10dp"
         android:text="Make Transparent"
         android:textAlignment="viewStart" />
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/setTransparency"
+        android:layout_alignEnd="@+id/setTransparency"
+        android:layout_alignStart="@+id/setTransparency"
+        android:layout_marginBottom="10dp"
+        android:max="10"
+        android:progress="0"
+        android:text="Make Transparent" />
 
 
 </RelativeLayout>

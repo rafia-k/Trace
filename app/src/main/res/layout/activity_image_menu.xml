@@ -11,16 +11,22 @@
         android:id="@+id/bingImage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/bingImage"
         android:layout_below="@id/galleryImage"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/bingImage"
         android:textSize="30sp" />
 
     <Button
         android:id="@+id/galleryImage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/galleryImage"
         android:layout_centerVertical="true"
+        android:layout_marginBottom="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/galleryImage"
         android:textSize="30sp" />
 
     <Button
@@ -28,6 +34,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/galleryImage"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:text="@string/savedImage"
         android:textSize="30sp" />
 

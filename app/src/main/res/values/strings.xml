@@ -12,7 +12,9 @@
     <string name="question4">How do I remove an image?</string>
     <string name="answer4">On the edit screen, drag the image to the trash icon.</string>
     <string name="question5">What types of images can I use?</string>
-    <string name="answer5">You can use .png and .gif images.</string>
+    <string name="answer5">You can use .png, .jpeg, and .gif images.</string>
+    <string name="question6">Will my screen turn off while I am trying to trace my image?</string>
+    <string name="answer6">No, your screen will remain active as long as you are on the camera screen of the app.</string>
 
     <string name="bingImage">Get From Bing Images</string>
     <string name="galleryImage">Upload From Gallery</string>
