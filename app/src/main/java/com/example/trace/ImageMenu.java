@@ -27,17 +27,18 @@ public class ImageMenu extends AppCompatActivity {
         LoadGalleryImage = (Button)findViewById(R.id.galleryImage);
         LoadBingImage = (Button)findViewById(R.id.bingImage);
 
+        //when "upload from gallery" button clicke
         LoadGalleryImage.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
+                //go to gallery
                 intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(intent, IMG_RESULT);
             }
         });
 
+        //when bing button clicked, goes to link
         LoadBingImage.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.bing.com/images/search?sp=1&pq=line+dr&sc=8-7&cvid=18D76BEEC95A40078DCE84ACB0381D6B&q=line+drawings&qft=+filterui:photo-transparent&FORM=IRFLTR"));
@@ -50,13 +51,11 @@ public class ImageMenu extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == IMG_RESULT && resultCode == RESULT_OK && null != data) {
-            Uri selectedImage = data.getData();
+            Uri selectedImage = data.getData(); //get img from gallery
 
             try {
                 String[] FILE = { MediaStore.Images.Media.DATA };
-
                 Cursor cursor = getContentResolver().query(selectedImage, FILE, null, null, null);
-
                 cursor.moveToFirst();
 
                 int columnIndex = cursor.getColumnIndex(FILE[0]);
