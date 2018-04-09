@@ -24,15 +24,15 @@ import android.view.MotionEvent;
 import android.view.Surface;
 import android.view.TextureView;
 import android.view.View;
-<<<<<<< Updated upstream
+
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.Switch;
-=======
+
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
->>>>>>> Stashed changes
+
 import android.widget.Toast;
 import android.widget.Toolbar;
 
@@ -42,10 +42,6 @@ public class CameraActivity extends AppCompatActivity {
 
 
     //drag and drop
-
-    //im_move_zoom_rotate
-    ImageView traceable;
-
 
     Toolbar toolbar;
     float scalediff;
@@ -71,6 +67,7 @@ public class CameraActivity extends AppCompatActivity {
     private Handler mBackgroundHandler;  //Had multiple import options, selected first
     private HandlerThread mBackgroundThread;
 
+    //im_move_zoom_rotate
     //ImageView
     ImageView traceable;
 
@@ -121,7 +118,7 @@ public class CameraActivity extends AppCompatActivity {
         traceable = (ImageView) findViewById(R.id.traceable);
         traceable.setImageURI(receivedImage);
 
-<<<<<<< Updated upstream
+
         OnOff = (Switch)findViewById(R.id.setTransparency);
         OnOff.setOnClickListener(new View.OnClickListener() {
 
@@ -138,7 +135,7 @@ public class CameraActivity extends AppCompatActivity {
 
             }
         });
-=======
+
 
         //DRAG AND DROP STUFF
         init();
@@ -276,7 +273,6 @@ public class CameraActivity extends AppCompatActivity {
         double delta_y = (event.getY(0) - event.getY(1));
         double radians = Math.atan2(delta_y, delta_x);
         return (float) Math.toDegrees(radians);
->>>>>>> Stashed changes
 
     }
 

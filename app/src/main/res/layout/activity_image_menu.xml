@@ -13,18 +13,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/galleryImage"
-<<<<<<< Updated upstream
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:text="@string/bingImage"
-        android:textSize="30sp" />
-=======
-        android:layout_marginRight="24dp"
-        android:layout_marginLeft="24dp"
-        android:backgroundTint="@android:color/holo_blue_dark"
-        android:text="@string/bingImage"
-        android:textSize="24sp" />
->>>>>>> Stashed changes
+        android:textSize="30sp"
+        android:backgroundTint="@android:color/holo_blue_dark"  />
 
     <Button
         android:id="@+id/galleryImage"
@@ -32,20 +25,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-<<<<<<< Updated upstream
         android:layout_marginBottom="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:text="@string/galleryImage"
-        android:textSize="30sp" />
-=======
-        android:layout_marginRight="24dp"
-        android:layout_marginLeft="24dp"
-        android:backgroundTint="@android:color/holo_blue_dark"
-        android:text="@string/galleryImage"
-        android:textSize="24sp" />
->>>>>>> Stashed changes
+        android:textSize="30sp"
+        android:backgroundTint="@android:color/holo_blue_dark" />
 
     <Button
         android:id="@+id/savedImage"
@@ -53,15 +39,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/galleryImage"
-<<<<<<< Updated upstream
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-=======
-        android:layout_marginLeft="24dp"
-        android:layout_marginRight="24dp"
         android:backgroundTint="@android:color/holo_blue_dark"
->>>>>>> Stashed changes
         android:text="@string/savedImage"
-        android:textSize="24sp" />
+        android:textSize="30sp" />
 
 </RelativeLayout>

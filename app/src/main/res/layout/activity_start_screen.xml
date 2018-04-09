@@ -24,21 +24,14 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
-<<<<<<< Updated upstream
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_above="@id/strut"
         android:layout_marginBottom="16dp"
-=======
-        android:layout_marginLeft="24dp"
-        android:layout_marginRight="24dp"
-        android:layout_marginTop="164dp"
         android:backgroundTint="@android:color/holo_blue_dark"
-        android:elevation="0dp"
->>>>>>> Stashed changes
         android:onClick="goToImageMenu"
         android:text="@string/start"
-        android:textSize="26sp" />
+        android:textSize="30sp" />
 
     <View android:id="@+id/strut"
         android:layout_width="0dp"
@@ -53,17 +46,11 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/strut"
         android:layout_centerVertical="true"
-<<<<<<< Updated upstream
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="16dp"
-=======
-        android:layout_marginLeft="24dp"
-        android:layout_marginRight="24dp"
-        android:layout_marginTop="26dp"
         android:backgroundTint="@android:color/holo_blue_dark"
->>>>>>> Stashed changes
         android:onClick="goToHelp"
         android:text="@string/help"
-        android:textSize="26sp" />
+        android:textSize="30sp" />
 </RelativeLayout>
