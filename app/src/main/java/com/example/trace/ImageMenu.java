@@ -1,31 +1,26 @@
 package com.example.trace;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.net.Uri;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 
 public class ImageMenu extends AppCompatActivity {
 
     private static int IMG_RESULT = 1;
-    String ImageDecode;
     Button LoadGalleryImage;
     Button LoadBingImage;
     Intent intent;
-    String[] FILE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_menu);
 
-        LoadGalleryImage = (Button)findViewById(R.id.galleryImage);
-        LoadBingImage = (Button)findViewById(R.id.bingImage);
+        LoadGalleryImage = findViewById(R.id.galleryImage);
+        LoadBingImage = findViewById(R.id.bingImage);
 
         //when "upload from gallery" button clicke
         LoadGalleryImage.setOnClickListener(new View.OnClickListener() {
@@ -54,13 +49,6 @@ public class ImageMenu extends AppCompatActivity {
             Uri selectedImage = data.getData(); //get img from gallery
 
             try {
-                String[] FILE = { MediaStore.Images.Media.DATA };
-                Cursor cursor = getContentResolver().query(selectedImage, FILE, null, null, null);
-                cursor.moveToFirst();
-
-                int columnIndex = cursor.getColumnIndex(FILE[0]);
-                String images= cursor.getString(columnIndex);
-
                 //Start camera activity and send image as an extra
                 Intent intent = new Intent(this, CameraActivity.class);
                 intent.putExtra("ImageURI", selectedImage);

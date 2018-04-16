@@ -56,7 +56,6 @@ public class CameraActivity extends AppCompatActivity {
 
     private TextureView textureView;
 
-    private String cameraId;
     private CameraDevice cameraDevice;
     private CameraCaptureSession cameraCaptureSessions;
     private CaptureRequest.Builder captureRequestBuilder;
@@ -256,7 +255,7 @@ public class CameraActivity extends AppCompatActivity {
 
     private void init() {
 
-        traceable= (ImageView) findViewById(R.id.traceable);
+        traceable= findViewById(R.id.traceable);
         //toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
 
@@ -318,7 +317,7 @@ public class CameraActivity extends AppCompatActivity {
     private void openCamera() {
         CameraManager manager = (CameraManager)getSystemService(Context.CAMERA_SERVICE);
         try {
-            cameraId = manager.getCameraIdList()[0];
+            String cameraId = manager.getCameraIdList()[0];
             CameraCharacteristics characteristics = manager.getCameraCharacteristics(cameraId);
             StreamConfigurationMap map = characteristics.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);
             assert map != null;

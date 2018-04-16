@@ -21,4 +21,5 @@
     <string name="savedImage">Use Saved Image</string>
 
     <string name="image">Image for tracing</string>
+    <string name="transparencyControl">Make Transparent</string>
 </resources>

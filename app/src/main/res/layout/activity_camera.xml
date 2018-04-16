@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:contentDescription="@string/savedImage" />
+        android:contentDescription="@string/image" />
 
     <Switch
         android:id="@+id/setTransparency"
@@ -28,7 +28,7 @@
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="16dp"
         android:switchPadding="10dp"
-        android:text="Make Transparent"
+        android:text="@string/transparencyControl"
         android:textAlignment="viewStart" />
 
     <SeekBar
@@ -42,7 +42,7 @@
         android:layout_marginBottom="10dp"
         android:max="10"
         android:progress="0"
-        android:text="Make Transparent" />
+        android:text="@string/transparencyControl" />
 
 
 </RelativeLayout>
