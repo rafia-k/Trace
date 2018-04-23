@@ -27,12 +27,12 @@ import android.view.View;
 
 import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.Switch;
+import android.widget.SeekBar;
 
 import android.view.animation.LinearInterpolator;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
@@ -71,7 +71,8 @@ public class CameraActivity extends AppCompatActivity {
     ImageView traceable;
 
     //Transparency switch
-    Switch OnOff;
+    SeekBar setTransparency;
+    TextView transparency;
 
 
     //TODO: Handle rotation of camera
@@ -118,20 +119,34 @@ public class CameraActivity extends AppCompatActivity {
         traceable.setImageURI(receivedImage);
 
 
-        OnOff = (Switch)findViewById(R.id.setTransparency);
-        OnOff.setOnClickListener(new View.OnClickListener() {
+        //Seekbar
+        setTransparency = findViewById(R.id.setTransparency);
+        //Text display
+        transparency = findViewById(R.id.transparency);
+        // perform seek bar change listener event used for getting the progress value
+        setTransparency.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            int progressChangedValue = 0;
 
-            @Override
-            public void onClick(View v) {
+            //This is a notification that the progress level has changed on the android seekBar. The parameter fromUser distinguishes user-initiated changes from the programmatic changes.
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                progressChangedValue = progress;
+                //Get the thumb bound and get its left value
+                int x = setTransparency.getThumb().getBounds().left + setTransparency.getLeft();
+                //set the left value to textview x value
+                transparency.setX(x);
 
-                if(OnOff.isChecked())
-                {
-                    traceable.setAlpha(0.4f);
-                }
-                else {
-                    traceable.setAlpha(1f);
-                }
+                transparency.setText((progressChangedValue * 10) + "%");
+                traceable.setAlpha(((float)(progressChangedValue) / -10) + 1);
+            }
 
+            // This is a notification that the user has started a touch gesture i.e the user has started to drag the thumb. We may use this method if want to lock the seekbar at the current level and prevent advancing.
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                // TODO Auto-generated method stub
+            }
+
+            //This is a notification that the user has finished the touch gesture i.e the user has stopped dragging the thumb. We may use this method if want to activate the seekbar at the current level and resume advancing.
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                // TODO Auto-generated method stub
             }
         });
 
