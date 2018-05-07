@@ -39,7 +39,7 @@
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".StartScreen" />
+                 android:value=".StartScreen" />
         </activity>
         <activity
             android:name=".CameraActivity"
@@ -50,7 +50,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".StartScreen" />
         </activity>
-        <activity android:name=".webBrowser" />
+        <activity android:name=".webBrowser"
+            android:parentActivityName=".ImageMenu">
+
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ImageMenu" />
+        </activity>
     </application>
 
 </manifest>

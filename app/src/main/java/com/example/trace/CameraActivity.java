@@ -105,7 +105,7 @@ public class CameraActivity extends AppCompatActivity {
         }
     };
 
-//MOSTLY GALLERY IMAGE STUFF
+    //MOSTLY GALLERY IMAGE STUFF
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -120,20 +120,20 @@ public class CameraActivity extends AppCompatActivity {
         textureView.setSurfaceTextureListener(textureListener);
 
         //Pulling the image from the intent and setting it to the image view
-            traceable = (ImageView) findViewById(R.id.traceable);
+        traceable = (ImageView) findViewById(R.id.traceable);
 
+        Uri receivedImage = getIntent().getParcelableExtra("ImageURI");
 
-                Uri receivedImage = getIntent().getParcelableExtra("ImageURI");
-                if(receivedImage!=null){
-                    traceable.setImageURI(receivedImage);
+        if(receivedImage!=null){
+            traceable.setImageURI(receivedImage);
 
-                }
-                else{
-                    String receivedImages = getIntent().getStringExtra("url");
-                    GetImages getImages = new GetImages();
-                    getImages.execute(receivedImages);
+        }
+        else{
+            String receivedImages = getIntent().getStringExtra("url");
+            GetImages getImages = new GetImages();
+            getImages.execute(receivedImages);
 
-                }
+        }
 
 
 
