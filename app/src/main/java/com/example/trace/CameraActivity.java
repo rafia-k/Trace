@@ -3,6 +3,8 @@ package com.example.trace;
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.SurfaceTexture;
 import android.graphics.drawable.BitmapDrawable;
 import android.hardware.camera2.CameraAccessException;
@@ -13,6 +15,7 @@ import android.hardware.camera2.CameraManager;
 import android.hardware.camera2.CaptureRequest;
 import android.hardware.camera2.params.StreamConfigurationMap;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.support.annotation.NonNull;
@@ -36,6 +39,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Arrays;
 
 public class CameraActivity extends AppCompatActivity {
@@ -114,9 +120,33 @@ public class CameraActivity extends AppCompatActivity {
         textureView.setSurfaceTextureListener(textureListener);
 
         //Pulling the image from the intent and setting it to the image view
-        Uri receivedImage = getIntent().getParcelableExtra("ImageURI");
-        traceable = (ImageView) findViewById(R.id.traceable);
-        traceable.setImageURI(receivedImage);
+            traceable = (ImageView) findViewById(R.id.traceable);
+
+
+                Uri receivedImage = getIntent().getParcelableExtra("ImageURI");
+                if(receivedImage!=null){
+                    traceable.setImageURI(receivedImage);
+
+                }
+                else{
+                    String receivedImages = getIntent().getStringExtra("url");
+                    GetImages getImages = new GetImages();
+                    getImages.execute(receivedImages);
+
+                }
+
+
+
+
+            /*
+            catch (NullPointerException e)
+            {
+                String receivedImage = getIntent().getStringExtra("url");
+                GetImages getImages = new GetImages();
+                getImages.execute(receivedImage);
+
+            }
+            */
 
 
         //Seekbar
@@ -416,6 +446,62 @@ public class CameraActivity extends AppCompatActivity {
         mBackgroundThread = new HandlerThread("Camera Background");
         mBackgroundThread.start();
         mBackgroundHandler = new Handler(mBackgroundThread.getLooper());
+    }
+    public class GetImages extends AsyncTask<String, Void, Bitmap> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        public Bitmap doInBackground(String[] urls) {
+            Bitmap map = null;
+            try {
+                //System.err.println("helloworld");
+                URL url = new URL(urls[0]);
+                HttpURLConnection connection =(HttpURLConnection)url.openConnection();
+                connection.setDoInput(true);
+                connection.connect();
+                InputStream input = connection.getInputStream();
+                map= BitmapFactory.decodeStream(input);
+                /*
+                if(map==null)
+                {
+                    System.err.println("HEY");
+                }
+                */
+
+
+            } catch (Exception e) {
+
+                e.printStackTrace();
+
+            }
+
+            return map;
+        }
+
+        protected void onPostExecute(Bitmap bMap) {
+
+
+            try {
+                if (!isCancelled()) {
+                    if (bMap != null) {
+                        traceable.setImageBitmap(bMap);
+                        //set your image view here.
+
+                    }
+                }
+            }catch (Exception exception){
+                exception.printStackTrace();
+            }
+        }
+
+
+
+
+
+
     }
 
 }

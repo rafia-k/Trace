@@ -22,7 +22,7 @@ public class ImageMenu extends AppCompatActivity {
         LoadGalleryImage = findViewById(R.id.galleryImage);
         LoadBingImage = findViewById(R.id.bingImage);
 
-        //when "upload from gallery" button clicke
+        //when "upload from gallery" button clicked
         LoadGalleryImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -36,8 +36,13 @@ public class ImageMenu extends AppCompatActivity {
         LoadBingImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                /*
                 Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.bing.com/images/search?sp=1&pq=line+dr&sc=8-7&cvid=18D76BEEC95A40078DCE84ACB0381D6B&q=line+drawings&qft=+filterui:photo-transparent&FORM=IRFLTR"));
                 startActivity(i);
+                */
+                Intent i = new Intent(v.getContext(), webBrowser.class);
+                startActivity(i);
+
             }
         });
     }
