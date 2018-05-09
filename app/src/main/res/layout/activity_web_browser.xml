@@ -13,23 +13,27 @@
 
 
     </WebView>
-<LinearLayout
-    android:paddingTop="450dp"
-    android:layout_width="match_parent"
-    android:gravity="center"
-    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom|center">
 
 
-    <Button
+        <Button
+            android:id="@+id/useImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="@string/useImage" />
 
-    android:id="@+id/button"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="use image"
+        <Button
+            android:id="@+id/external"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="@string/external" />
 
-
-    />
-
-</LinearLayout>
+    </LinearLayout>
 
 </RelativeLayout>

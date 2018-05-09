@@ -28,7 +28,8 @@ import java.net.URLConnection;
 
 public class webBrowser extends AppCompatActivity {
     WebView webview;
-    Button button;
+    Button useImage;
+    Button external;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +45,8 @@ public class webBrowser extends AppCompatActivity {
         webview.loadUrl("https://www.bing.com/images/search?sp=1&pq=line+dr&sc=8-7&cvid=18D76BEEC95A40078DCE84ACB0381D6B&q=line+drawings&qft=+filterui:photo-transparent&FORM=IRFLTR");
 
 
-        button = findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
+        useImage = findViewById(R.id.useImage);
+        useImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -57,6 +58,20 @@ public class webBrowser extends AppCompatActivity {
 
 
 
+            }
+        });
+
+
+        //Open the current page in android's default browser - to be used in case of a problem with the built in browser
+        external = findViewById(R.id.external);
+        external.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String url = (webview.getUrl());
+
+                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                startActivity(i);
             }
         });
     }

@@ -1,6 +1,7 @@
 package com.example.trace;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -48,8 +49,6 @@ public class CameraActivity extends AppCompatActivity {
 
 
     //drag and drop
-
-    Toolbar toolbar;
     float scalediff;
     private static final int NONE = 0;
     private static final int DRAG = 1;
@@ -81,11 +80,6 @@ public class CameraActivity extends AppCompatActivity {
     TextView transparency;
 
 
-    //TODO: Handle rotation of camera
-    //TODO: Save transparency state after rotation
-    //TODO: Scale all images to a similar starting size regardless of source resolution
-
-
     CameraDevice.StateCallback stateCallback = new CameraDevice.StateCallback() {
         @Override
         public void onOpened(@NonNull CameraDevice camera) {
@@ -106,6 +100,7 @@ public class CameraActivity extends AppCompatActivity {
     };
 
     //MOSTLY GALLERY IMAGE STUFF
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

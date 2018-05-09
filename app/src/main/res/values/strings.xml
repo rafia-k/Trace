@@ -22,4 +22,7 @@
 
     <string name="image">Image for tracing</string>
     <string name="transparencyControl">Make Transparent</string>
+
+    <string name="useImage">Use Image</string>
+    <string name="external">Switch to External Browser</string>
 </resources>
