@@ -23,6 +23,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Size;
 import android.view.MotionEvent;
 import android.view.Surface;
@@ -38,7 +39,6 @@ import android.widget.RelativeLayout;
 
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -71,7 +71,6 @@ public class CameraActivity extends AppCompatActivity {
     private Handler mBackgroundHandler;  //Had multiple import options, selected first
     private HandlerThread mBackgroundThread;
 
-    //im_move_zoom_rotate
     //ImageView
     ImageView traceable;
 
@@ -114,14 +113,19 @@ public class CameraActivity extends AppCompatActivity {
         assert textureView != null;
         textureView.setSurfaceTextureListener(textureListener);
 
-        //Pulling the image from the intent and setting it to the image view
-        traceable = (ImageView) findViewById(R.id.traceable);
+
+
+        //Create a new image view called traceable and add it to the Relative Layout, then
+        //Pull the image from the intent and set it to the image view
+        //TODO:Creating a new image view every time may allow the addition of multiple images
+        traceable = new ImageView(this);
+        RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.cameraRelativeLayout);
+        relativeLayout.addView(traceable);
+
 
         Uri receivedImage = getIntent().getParcelableExtra("ImageURI");
-
         if(receivedImage!=null){
             traceable.setImageURI(receivedImage);
-
         }
         else{
             String receivedImages = getIntent().getStringExtra("url");
@@ -129,19 +133,6 @@ public class CameraActivity extends AppCompatActivity {
             getImages.execute(receivedImages);
 
         }
-
-
-
-
-            /*
-            catch (NullPointerException e)
-            {
-                String receivedImage = getIntent().getStringExtra("url");
-                GetImages getImages = new GetImages();
-                getImages.execute(receivedImage);
-
-            }
-            */
 
 
         //Seekbar
@@ -166,25 +157,24 @@ public class CameraActivity extends AppCompatActivity {
 
             // This is a notification that the user has started a touch gesture i.e the user has started to drag the thumb. We may use this method if want to lock the seekbar at the current level and prevent advancing.
             public void onStartTrackingTouch(SeekBar seekBar) {
-                // TODO Auto-generated method stub
             }
 
             //This is a notification that the user has finished the touch gesture i.e the user has stopped dragging the thumb. We may use this method if want to activate the seekbar at the current level and resume advancing.
             public void onStopTrackingTouch(SeekBar seekBar) {
-                // TODO Auto-generated method stub
             }
         });
 
 
-        //DRAG AND DROP STUFF
-        init();
+        //Get the screen size (Have to use this library instead of getwidth/getheight because in onCreate, the layout hsn't been created yet
+        DisplayMetrics metrics = this.getResources().getDisplayMetrics();
+        int width = metrics.widthPixels - 200;
+        int height = metrics.heightPixels - 200;
 
-
-        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(250, 250);
-        layoutParams.leftMargin = 50;
-        layoutParams.topMargin = 50;
-        layoutParams.bottomMargin = -250;
-        layoutParams.rightMargin = -250;
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(width, height);
+        layoutParams.leftMargin = 100;
+        layoutParams.topMargin = 100;
+        layoutParams.bottomMargin = 100;
+        layoutParams.rightMargin = 100;
         traceable.setLayoutParams(layoutParams);
 
         traceable.setOnTouchListener(new View.OnTouchListener() {
@@ -291,14 +281,6 @@ public class CameraActivity extends AppCompatActivity {
 
             }
         });
-    }
-
-    private void init() {
-
-        traceable= findViewById(R.id.traceable);
-        //toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
-
     }
 
     private float spacing(MotionEvent event) {
@@ -452,25 +434,15 @@ public class CameraActivity extends AppCompatActivity {
         public Bitmap doInBackground(String[] urls) {
             Bitmap map = null;
             try {
-                //System.err.println("helloworld");
                 URL url = new URL(urls[0]);
                 HttpURLConnection connection =(HttpURLConnection)url.openConnection();
                 connection.setDoInput(true);
                 connection.connect();
                 InputStream input = connection.getInputStream();
                 map= BitmapFactory.decodeStream(input);
-                /*
-                if(map==null)
-                {
-                    System.err.println("HEY");
-                }
-                */
-
 
             } catch (Exception e) {
-
                 e.printStackTrace();
-
             }
 
             return map;
