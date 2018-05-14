@@ -123,6 +123,8 @@ public class CameraActivity extends AppCompatActivity {
         relativeLayout.addView(traceable);
 
 
+        //Tries to parse the extra, and then if it doesn't work then it must be a string URL
+        //URI is for a gallery image and URL is for online image
         Uri receivedImage = getIntent().getParcelableExtra("ImageURI");
         if(receivedImage!=null){
             traceable.setImageURI(receivedImage);
@@ -454,9 +456,8 @@ public class CameraActivity extends AppCompatActivity {
             try {
                 if (!isCancelled()) {
                     if (bMap != null) {
+                        //This is where the imageview is actually set if you use a URL
                         traceable.setImageBitmap(bMap);
-                        //set your image view here.
-
                     }
                 }
             }catch (Exception exception){

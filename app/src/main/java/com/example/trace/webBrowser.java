@@ -13,6 +13,7 @@ import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.URLUtil;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
@@ -39,6 +40,9 @@ public class webBrowser extends AppCompatActivity {
         webview.setWebViewClient(new WebViewClient());
         webview.getSettings().setJavaScriptEnabled(true);
         webview.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+        //This line of code allows transparent http images to show up in an https window, rather than the low res cached image without transparency
+        //Allows low risk mixed content
+        webview.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_COMPATIBILITY_MODE);
 
         //Context menu is the pop up - It can't open if you don't register for it onCreate
         registerForContextMenu(webview);
@@ -100,11 +104,11 @@ public class webBrowser extends AppCompatActivity {
         if (webViewHitTestResult.getType() == WebView.HitTestResult.IMAGE_TYPE ||
                 webViewHitTestResult.getType() == WebView.HitTestResult.SRC_IMAGE_ANCHOR_TYPE) {
 
-            contextMenu.setHeaderTitle("Select Image");
+            //contextMenu.setHeaderTitle("Select Image");
             //Context menu icon resource
             //contextMenu.setHeaderIcon(R.drawable.download);
 
-            contextMenu.add(0, 1, 0, "Click to Use Image")
+            contextMenu.add(0, 1, 0, "Select image")
                     .setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                         @Override
                         public boolean onMenuItemClick(MenuItem menuItem) {
@@ -124,14 +128,47 @@ public class webBrowser extends AppCompatActivity {
                                 intent.putExtra("url", DownloadImageURL);
                                 startActivity(intent);
 
-                                Toast.makeText(webBrowser.this,"Image Downloaded Successfully",Toast.LENGTH_LONG).show();
+                                Toast.makeText(webBrowser.this,"Image selected",Toast.LENGTH_LONG).show();
                             }
                             else {
-                                Toast.makeText(webBrowser.this,"Sorry.. Something Went Wrong...",Toast.LENGTH_LONG).show();
+                                Toast.makeText(webBrowser.this,"Sorry, something went wrong...",Toast.LENGTH_LONG).show();
                             }
                             return false;
                         }
                     });
+
+
+
+            contextMenu.add(0, 1, 0, "Select image and save to app")
+                    .setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                        @Override
+                        public boolean onMenuItemClick(MenuItem menuItem) {
+
+                            //Capture the image's URL from its HTML tag
+                            String DownloadImageURL = webViewHitTestResult.getExtra();
+
+                            if(URLUtil.isValidUrl(DownloadImageURL)){
+                                //Download the image
+                                DownloadManager.Request mRequest = new DownloadManager.Request(Uri.parse(DownloadImageURL));
+                                mRequest.allowScanningByMediaScanner();
+                                mRequest.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                                DownloadManager mDownloadManager = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
+                                mDownloadManager.enqueue(mRequest);
+
+                                Intent intent = new Intent(webBrowser.this, CameraActivity.class);
+                                intent.putExtra("url", DownloadImageURL);
+                                startActivity(intent);
+
+                                Toast.makeText(webBrowser.this,"Image selected and downloaded successfully",Toast.LENGTH_LONG).show();
+                            }
+                            else {
+                                Toast.makeText(webBrowser.this,"Sorry, something went wrong...",Toast.LENGTH_LONG).show();
+                            }
+                            return false;
+                        }
+                    });
+
+
         }
     }
 
