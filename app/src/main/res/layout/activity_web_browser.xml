@@ -20,7 +20,7 @@
         android:gravity="bottom|center">
 
 
-        <Button
+        <!-- <Button
             android:id="@+id/useImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:text="@string/external" />
+            android:text="@string/external" /> -->
 
     </LinearLayout>
 

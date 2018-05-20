@@ -49,7 +49,8 @@ public class webBrowser extends AppCompatActivity {
         webview.loadUrl("https://www.bing.com/images/search?sp=1&pq=line+dr&sc=8-7&cvid=18D76BEEC95A40078DCE84ACB0381D6B&q=line+drawings&qft=+filterui:photo-transparent&FORM=IRFLTR");
 
 
-        useImage = findViewById(R.id.useImage);
+        //This button requires the user to have navigated to the image's URL, which is a pain. Button is currently disabled.
+        /* useImage = findViewById(R.id.useImage);
         useImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -77,7 +78,7 @@ public class webBrowser extends AppCompatActivity {
                 Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
                 startActivity(i);
             }
-        });
+        });  */
     }
 
 
@@ -117,13 +118,6 @@ public class webBrowser extends AppCompatActivity {
                             String DownloadImageURL = webViewHitTestResult.getExtra();
 
                             if(URLUtil.isValidUrl(DownloadImageURL)){
-                                //Download the image
-                                //DownloadManager.Request mRequest = new DownloadManager.Request(Uri.parse(DownloadImageURL));
-                                //mRequest.allowScanningByMediaScanner();
-                                //mRequest.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-                                //DownloadManager mDownloadManager = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
-                                //mDownloadManager.enqueue(mRequest);
-
                                 Intent intent = new Intent(webBrowser.this, CameraActivity.class);
                                 intent.putExtra("url", DownloadImageURL);
                                 startActivity(intent);
@@ -153,6 +147,7 @@ public class webBrowser extends AppCompatActivity {
                                 mRequest.allowScanningByMediaScanner();
                                 mRequest.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
                                 DownloadManager mDownloadManager = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
+                                //mRequest.setDestinationInExternalPublicDir("/Trace","file.ext");
                                 mDownloadManager.enqueue(mRequest);
 
                                 Intent intent = new Intent(webBrowser.this, CameraActivity.class);
